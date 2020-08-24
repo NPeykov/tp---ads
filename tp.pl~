@@ -31,7 +31,9 @@ principal :-
 
     send(P, open_centered).
 
-
+/*comentarios---
+ * message(Objeto, clera) <- limpia por ejemplo, un text box
+    */
 
 
 /*----------------LOGO UTN---------------*/
@@ -51,22 +53,68 @@ nueva_imagen(Ventana, Figura, Imagen, Posicion) :-
 interfazMostrar :-
     new(D, dialog('Los Simuladores')),
 
-    new(L1, label(texto,'INGRESE UNA MATERIA PARA CONOCER SUS CORRELATIVAS',
+    new(L1, label(texto,'CONOZCA LAS CORRELATIVAS DE UNA MATERIA',
                   italic)),
 
     send(D, append, L1),
 
-    send(D, append, new(Ingresar, /*Ingreso la materia*/
-                        text_item(ingresar_materia,'ingrese una materia..'))),
+    %%text group para barra de texto
+    send(D, append, new(AcaVaTexto,dialog_group('', box))),
+
+   % send(D, append, new(TextoBlanco3, text('')), below),
+
+    send(AcaVaTexto, append, new(Ingresar, /*Ingreso la materia*/
+                        text_item('Materia:','ingrese una materia..')),next_row),
+
+   % send(D, append, new(TextoBlanco, text('')), below),
+   % send(D, append, new(TextoBlanco2, label(texto,'Seleccione tipo de consulta', italic)), next_row),
 
 
-    send(D, append, button('Ok', and(message(@prolog,
+
+    /*botones "materiasCursadas, materiasAprobadas y materiasAprobadas2*/
+
+    new(MateriasCursadas, button('Materias Cursadas',
+                                 and(message(@prolog,
+                                             buscarCorrelativasCC,
+                                             Ingresar?selection)))),
+    new(MateriasAprobadas, button('Materias Aprobadas',
+                                  and(message(@prolog,
+                                              buscarCorrelativasCA,
+                                              Ingresar?selection)))),
+    new(MateriasAprobadasRendir, button('Materias Aprobadas',
+                                        and(message(@prolog,
+                                                    buscarCorrelativasRA,
+                                                    Ingresar?selection)))),
+    new(ParaCursar, label(texto,  '                   Para Cursar                   ', bold)),
+    new(ParaAprobar, label(texto, '                   Para Aprobar                  ', bold)),
+
+    new(Izquierda, dialog_group('', box)),
+    new(Derecha, dialog_group('', group)),
+
+    new(EspacioBlanco, label('')),
+
+    %----------------------------------------------------------------------
+    send(D, append, Izquierda),
+    send(Izquierda, append, Derecha),
+
+
+    send(Derecha, append, ParaAprobar),
+    send(Derecha, append, MateriasAprobadasRendir),
+
+    send(Izquierda, append, EspacioBlanco, below),
+
+    send(Izquierda, append, ParaCursar),
+    send(Izquierda, append, MateriasCursadas),
+    send(Izquierda, append, MateriasAprobadas, below),
+
+
+
+   /* send(D, append, button('Ok', and(message(@prolog,
                                            buscarCorrelativasDe,
-                                           Ingresar?selection),
-                                     message(Ingresar, clear)))),
+                                           Ingresar?selection)))),
 
-
-    send(D, append, button('Cancel', and(message(D, free),message(D, destroy)))),
+   */
+    send(D, append, button('Volver', and(message(D, free),message(D, destroy))), below),
 
     send(D, open_centered).
 
@@ -77,6 +125,7 @@ interfazIngresar :-
     new(D, dialog('Los Simuladores')),
 
     new(L1, label(texto,'CONOZCA LA DISPONIBILIDAD A BASE DE MATERIAS',
+
                   italic)),
 
     send(D, append, L1),
@@ -289,7 +338,7 @@ anio(sistemasDeGestion, quinto).
 
 
 
-buscarCorrelativasDe(Ingresar) :-
+buscarCorrelativasRA(Ingresar) :-
     tieneMateriasDe(Ingresar, _, _, _, _, _).
 
 
