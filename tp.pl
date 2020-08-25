@@ -263,12 +263,120 @@ correlativa(proyectoFinal, Materia) :-
     materia(Materia),
     Materia \= proyectoFinal.
 
+correlativaCC(analisisDeSistemas, syo).
+correlativaCC(analisisDeSistemas, algoritmos).
+correlativaCC(am2, am1).
+correlativaCC(am2, algebra).
+correlativaCC(sintaxis, discreta).
+correlativaCC(sintaxis, algoritmos).
+correlativaCC(paradigmas, discreta).
+correlativaCC(paradigmas, algoritmos).
+correlativaCC(disenioDeSistemas, analisisDeSistemas).
+correlativaCC(disenioDeSistemas, paradigmas).
+correlativaCC(sistemasOperativos, discreta).
+correlativaCC(sistemasOperativos, algoritmos).
+correlativaCC(sistemasOperativos, arquitecturaDeCompuradoras).
+correlativaCC(fisica2, am1).
+correlativaCC(fisica2, fisica1).
+correlativaCC(economia, analisisDeSistemas).
+correlativaCC(gestionDeDatos, analisisDeSistemas).
+correlativaCC(gestionDeDatos, paradigmas).
+correlativaCC(gestionDeDatos, sintaxis).
+correlativaCC(matematicaSuperior, am2).
+correlativaCC(legislacion, analisisDeSistemas).
+correlativaCC(legislacion, ingenieriaYSociedad).
+correlativaCC(administracionDeRecursos, disenioDeSistemas).
+correlativaCC(administracionDeRecursos, sistemasOperativos).
+correlativaCC(administracionDeRecursos, economia).
+correlativaCC(ingenieriaDeSoftware, probabilidad).
+correlativaCC(ingenieriaDeSoftware, disenioDeSistemas).
+correlativaCC(ingenieriaDeSoftware, gestionDeDatos).
+correlativaCC(teoriaDeControl, quimica).
+correlativaCC(teoriaDeControl, matematicaSuperior).
+correlativaCC(comunicaciones, arquitecturaDeCompuradoras).
+correlativaCC(comunicaciones, am2).
+correlativaCC(comunicaciones, fisica2).
+correlativaCC(redesDeInformacion, sistemasOperativos).
+correlativaCC(redesDeInformacion, comunicaciones).
+correlativaCC(investigacionOperativa, probabilidad).
+correlativaCC(investigacionOperativa, matematicaSuperior).
+correlativaCC(simulacion, probabilidad).
+correlativaCC(simulacion, matematicaSuperior).
+correlativaCC(proyectoFinal, legislacion).
+correlativaCC(proyectoFinal, administracionDeRecursos).
+correlativaCC(proyectoFinal, redesDeInformacion).
+correlativaCC(proyectoFinal, ingenieriaDeSoftware).
+correlativaCC(inteligenciaArtificial, investigacionOperativa).
+correlativaCC(inteligenciaArtificial, simulacion).
+correlativaCC(administracionGerencial, administracionDeRecursos).
+correlativaCC(administracionGerencial, investigacionOperativa).
+correlativaCC(sistemasDeGestion, administracionDeRecursos).
+correlativaCC(sistemasDeGestion, investigacionOperativa).
+correlativaCC(sistemasDeGestion, simulacion).
+
+correlativaCA(disenioDeSistemas, discreta).
+correlativaCA(disenioDeSistemas, algoritmos).
+correlativaCA(disenioDeSistemas, syo).
+correlativaCA(economia, algoritmos).
+correlativaCA(economia, syo).
+correlativaCA(gestionDeDatos, discreta).
+correlativaCA(gestionDeDatos, algoritmos).
+correlativaCA(gestionDeDatos, syo).
+correlativaCA(ingles2, ingles1).
+correlativaCA(matematicaSuperior, am1).
+correlativaCA(matematicaSuperior, algebra).
+correlativaCA(legislacion, syo).
+correlativaCA(legislacion, algoritmos).
+correlativaCA(administracionDeRecursos, arquitecturaDeCompuradoras).
+correlativaCA(administracionDeRecursos, ingles1).
+correlativaCA(administracionDeRecursos, analisisDeSistemas).
+correlativaCA(administracionDeRecursos, paradigmas).
+correlativaCA(ingenieriaDeSoftware, analisisDeSistemas).
+correlativaCA(ingenieriaDeSoftware, sintaxis).
+correlativaCA(ingenieriaDeSoftware, paradigmas).
+correlativaCA(teoriaDeControl, am2).
+correlativaCA(teoriaDeControl, fisica2).
+correlativaCA(comunicaciones, am1).
+correlativaCA(comunicaciones, algebra).
+correlativaCA(comunicaciones, fisica1).
+correlativaCA(redesDeInformacion, discreta).
+correlativaCA(redesDeInformacion, algoritmos).
+correlativaCA(redesDeInformacion, arquitecturaDeCompuradoras).
+correlativaCA(redesDeInformacion, am2).
+correlativaCA(redesDeInformacion, fisica2).
+correlativaCA(investigacionOperativa, am2).
+correlativaCA(simulacion, am2).
+correlativaCA(proyectoFinal, ingenieriaYSociedad).
+correlativaCA(proyectoFinal, sistemasDeRepresentacion).
+correlativaCA(proyectoFinal, probabilidad).
+correlativaCA(proyectoFinal, sistemasOperativos).
+correlativaCA(proyectoFinal, disenioDeSistemas).
+correlativaCA(proyectoFinal, gestionDeDatos).
+correlativaCA(proyectoFinal, economia).
+correlativaCA(proyectoFinal, ingles2).
+correlativaCA(proyectoFinal, comunicaciones).
+correlativaCA(inteligenciaArtificial, probabilidad).
+correlativaCA(inteligenciaArtificial, disenioDeSistemas).
+correlativaCA(inteligenciaArtificial, matematicaSuperior).
+correlativaCA(administracionGerencial, probabilidad).
+correlativaCA(administracionGerencial, sistemasOperativos).
+correlativaCA(administracionGerencial, disenioDeSistemas).
+correlativaCA(administracionGerencial, matematicaSuperior).
+correlativaCA(administracionGerencial, economia).
+correlativaCA(sistemasDeGestion, probabilidad).
+correlativaCA(sistemasDeGestion, sistemasOperativos).
+correlativaCA(sistemasDeGestion, disenioDeSistemas).
+correlativaCA(sistemasDeGestion, matematicaSuperior).
+correlativaCA(sistemasDeGestion, economia).
+
+
 /*Nombre de cada materia*/
 es(syo, "Sistemas y Organizaciones").
 es(am1, "Análisis Matemático I").
 es(discreta, "Matemática Discreta").
 es(algebra, "Álgebra y Geometria Analítica").
 es(quimica, "Química").
+es(algoritmos, "Algoritmos y Estructura de Datos").
 es(ingenieriaYSociedad, "Ingeniería y Sociedad").
 es(analisisDeSistemas, "Análisis de Sistemas").
 es(sistemasDeRepresentacion, "Sistemas de Representacion").
@@ -336,7 +444,128 @@ anio(inteligenciaArtificial, quinto).
 anio(administracionGerencial, quinto).
 anio(sistemasDeGestion, quinto).
 
+/*MATERIAS QUE SE DEBEN HABER APROBADO PARA CURSAR UNA MATERIA*/
+buscarCorrelativasCA(Ingresar) :-
+    tieneQueAprobarMateriasDe(Ingresar, _, _, _, _, _).
 
+tieneQueAprobarMateriasDe(Materia, _, _, _, _, _) :-
+    seNecesitaAprobarA(Materia, ListaMaterias),
+    findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  primero),  Primero),
+    findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  segundo),  Segundo),
+    findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  tercero),  Tercero),
+    findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  cuarto),   Cuarto),
+    findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  quinto),   Quinto),
+
+    new(Y, dialog('Materias')),
+    new(L1, label(texto, 'Materias de primer año', bold)),
+    new(L2, label(texto, 'Materias de segundo año', bold)),
+    new(L3, label(texto, 'Materias de tercer año', bold)),
+    new(L4, label(texto, 'Materias de cuarto año', bold)),
+    new(L5, label(texto, 'Materias de quinto año', bold)),
+    send(Y, append, new(C1, dialog_group(texts, group))),
+    send(C1, append, L1),
+    send(C1, append, new(List1, browser), below),
+    send_list(List1, append, Primero),
+    send(Y, append, new(C2, dialog_group(texts, group)), right),
+    send(C2, append, L2, right),
+    send(C2, append, new(List2, browser)),
+    send_list(List2, append, Segundo),
+    send(Y, append, new(C3, dialog_group(texts, group)), right),
+    send(C3, append, L3,right),
+    send(C3, append, new(List3, browser)),
+    send_list(List3, append, Tercero),
+    send(Y, append, new(C4, dialog_group(texts, group)), right),
+    send(C4, append, L4, right),
+    send(C4, append, new(List4, browser)),
+    send_list(List4, append, Cuarto),
+    send(Y, append, new(C5, dialog_group(texts, group)), right),
+    send(C5, append, L5, right),
+    send(C5, append, new(List5, browser)),
+    send_list(List5, append, Quinto),
+    send(Y, append, button(volver,
+                               and(message(Y, free), message(Y, destroy)))),
+    send(Y, open_centered).
+
+seNecesitaAprobarA(Materia, Aprobadas) :-
+    findall(Aprobada, (materia(Aprobada),tieneRelacionAprobadaA(Materia, Aprobada)), MateriasNecesarias),
+    list_to_set(MateriasNecesarias, Aprobadas).
+
+tieneRelacionAprobadaA(Materia, Aprobada) :-
+    correlativaCA(Materia, Aprobada).
+tieneRelacionAprobadaA(Materia, Aprobada) :-
+    correlativaCA(Materia, UnaMateria),
+    tieneRelacionAprobadaA(UnaMateria, Aprobada).
+
+
+/*MATERIAS QUE SE DEBEN HABER CURSADO PARA CURSAR UNA MATERIA*/
+
+buscarCorrelativasCC(Ingresar) :-
+    tieneQueCursarMateriasDe(Ingresar, _, _, _, _, _).
+
+tieneQueCursarMateriasDe(Materia, _, _, _, _, _) :-
+    seNecesitaCursar(Materia, ListaMaterias),
+    findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  primero),  Primero),
+    findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  segundo),  Segundo),
+    findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  tercero),  Tercero),
+    findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  cuarto),   Cuarto),
+    findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  quinto),   Quinto),
+
+
+    new(X, dialog('Materias')),
+
+    new(L1, label(texto, 'Materias de primer año', bold)),
+    new(L2, label(texto, 'Materias de segundo año', bold)),
+    new(L3, label(texto, 'Materias de tercer año', bold)),
+    new(L4, label(texto, 'Materias de cuarto año', bold)),
+    new(L5, label(texto, 'Materias de quinto año', bold)),
+
+    send(X, append, new(C1, dialog_group(texts, group))),
+    send(C1, append, L1),
+    send(C1, append, new(List1, browser), below),
+    send_list(List1, append, Primero),
+
+    send(X, append, new(C2, dialog_group(texts, group)), right),
+    send(C2, append, L2, right),
+    send(C2, append, new(List2, browser)),
+    send_list(List2, append, Segundo),
+
+    send(X, append, new(C3, dialog_group(texts, group)), right),
+    send(C3, append, L3,right),
+    send(C3, append, new(List3, browser)),
+    send_list(List3, append, Tercero),
+
+    send(X, append, new(C4, dialog_group(texts, group)), right),
+    send(C4, append, L4, right),
+    send(C4, append, new(List4, browser)),
+    send_list(List4, append, Cuarto),
+
+    send(X, append, new(C5, dialog_group(texts, group)), right),
+    send(C5, append, L5, right),
+    send(C5, append, new(List5, browser)), /*o list_browser*/
+    send_list(List5, append, Quinto),
+
+    /*send(W, append, new(_, text_item(materia, prolog(Algo)))),*/
+
+    send(X, append, button(volver,
+                               and(message(X, free), message(X, destroy)))),
+
+    send(X, open_centered).
+
+seNecesitaCursar(Materia, Cursadas) :-
+    findall(Cursada, (materia(Cursada),tieneRelacionCursada(Materia, Cursada)), MateriasNecesarias),
+    list_to_set(MateriasNecesarias, Cursadas).
+
+tieneRelacionCursada(Materia, Cursada) :-
+    correlativaCC(Materia, Cursada).
+tieneRelacionCursada(Materia, Cursada) :-
+    correlativaCC(Materia, UnaMateria),
+    tieneRelacionCursada(UnaMateria, Cursada).
+
+
+
+
+
+/*CORRELATIVAS QUE SE NECESITAN PARA APROBAR UNA MATERIA*/
 
 buscarCorrelativasRA(Ingresar) :-
     tieneMateriasDe(Ingresar, _, _, _, _, _).
