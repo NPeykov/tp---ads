@@ -3,7 +3,7 @@
 :- pce_image_directory('C:/Program Files/Correlativas/image').
 :- pce_image_directory('C:/Archivos de Programa/Correlativas/image').
 
-
+main :- principal.
 
 principal :-
     new(P, dialog('ADS - Correlatividad')),
@@ -16,14 +16,14 @@ principal :-
                            and(message(@prolog,
                                        interfazMostrar)))),
 
-    new(Ingresar, button('Ingresar Materias',
-                        and(message(@prolog, interfazIngresar)))),
+%    new(Ingresar, button('Ingresar Materias',
+ %                       and(message(@prolog, interfazIngresar)))),
 
     new(Cerrar, button('Cerrar',
                           and(message(P, free), message(P, destroy)))),
 
 
-    send(P, append, Ingresar),
+  %  send(P, append, Ingresar),
 
     send(P, append, Mostrar),
 
@@ -85,8 +85,8 @@ interfazMostrar :-
                                         and(message(@prolog,
                                                     buscarCorrelativasRA,
                                                     Ingresar?selection)))),
-    new(ParaCursar, label(texto,  '                   Para Cursar                   ', bold)),
-    new(ParaAprobar, label(texto, '                   Para Aprobar                  ', bold)),
+    new(ParaCursar, label(texto,  '         Requisitos para Cursar            ', bold)),
+    new(ParaAprobar, label(texto, '         Requisitos para Firmar            ', bold)),
 
     new(Izquierda, dialog_group('', box)),
     new(Derecha, dialog_group('', group)),
@@ -371,41 +371,50 @@ correlativaCA(sistemasDeGestion, economia).
 
 
 /*Nombre de cada materia*/
-es(syo, "Sistemas y Organizaciones").
-es(am1, "Análisis Matemático I").
-es(discreta, "Matemática Discreta").
-es(algebra, "Álgebra y Geometria Analítica").
-es(quimica, "Química").
-es(algoritmos, "Algoritmos y Estructura de Datos").
-es(ingenieriaYSociedad, "Ingeniería y Sociedad").
-es(analisisDeSistemas, "Análisis de Sistemas").
-es(sistemasDeRepresentacion, "Sistemas de Representacion").
-es(am2, "Análisis Matemático II").
-es(sintaxis, "Sintaxis y Semántica de los Lenguajes").
-es(fisica1, "Física I").
-es(paradigmas, "Paradigmas de Programación").
-es(ingles1, "Inglés I").
-es(probabilidad, "Probabilidad y Estadística").
-es(disenioDeSistemas, "Diseño de Sistemas").
-es(sistemasOperativos, "Sistemas Operativos").
-es(fisica2, "Física II").
-es(economia, "Economía").
-es(gestionDeDatos, "Gestión de Datos").
-es(ingles2, "Ingles II").
-es(matematicaSuperior, "Matemática Superior").
-es(legislacion, "Legislación").
-es(administracionDeRecursos, "Administración de Recursos").
-es(ingenieriaDeSoftware, "Ingeniería de Software").
-es(teoriaDeControl, "Teoría de Control").
-es(comunicaciones, "Comunicaciones").
-es(redesDeInformacion, "Redes de Información").
-es(investigacionOperativa, "Investigación Operativa").
-es(simulacion, "Simulación").
-es(proyectoFinal, "Proyecto Final").
-es(inteligenciaArtificial, "Inteligencia Artificial").
-es(administracionGerencial, "Administración Gerencial").
-es(sistemasDeGestion, "Sistemas de Gestión").
-
+es(syo,['Sistemas y Organizaciones', 'SyO', 'Sistemas y Organizaciones', 'sistemas y organizaciones', 'syo', 'SISTEMAS Y ORGANIZACIONES']).
+es(am1, ['Análisis Matemático I', 'am1', 'Analisis Matematico I', 'Analisis Matematico 1', 'analisis matematico 1', 'analisis matematico I','ANALISIS MATEMATICO I']).
+es(discreta, ['Matemática Discreta', 'discreta', 'matematica discreta', 'Matematica Discreta']).
+es(algebra, ['Álgebra y Geometria Analítica', 'aga', 'ayga', 'AGA', 'Algebra y Geometria Analitica', 'algebra y geometria analitica','ALGEBRA Y GEOMETRIA ANALITICA']).
+es(algoritmos, ['Algoritmos y Estructura de Datos', 'AyED', 'algoritmos', 'algoritmos y estructura de datos', 'ALGORITMOS Y ESTRUCTURA DE DATOS']).
+es(arquitecturaDeCompuradoras, ['Arquitectura de Computadoras', 'arquitectura', 'arquitectura de computadoras', 'ARQUITECTURA DE COMPUTADORAS', 'Arquitectura de computadoras']).
+es(quimica, ['Química', 'quimica', 'Quimica', 'qck', 'QUIMICA']).
+es(ingenieriaYSociedad, ['Ingeniería y Sociedad', 'IyS', 'Ingenieria y Sociedad', 'Ingenieria y sociedad', 'ingenieria y sociedad', 'INGENIERIA Y SOCIEDAD']).
+es(analisisDeSistemas, ['Análisis de Sistemas','AdS', 'ads', 'ADS', 'Analisis de Sistemas', 'analisis de sistemas', 'Analisis de sistemas', 'ANALISIS DE SISTEMAS']).
+es(sistemasDeRepresentacion, ['Sistemas de Representacion','SdR','sdr','Sistemas de Representación',
+                              'Sistemas de representacion','sistemas de representacion', 'SISTEMAS DE REPRESENTACION']).
+es(am2, ['Análisis Matemático II', 'am2','amII','Analisis Matematico 2', 'analisis matematico 2', 'analisis 2', 'AM2', 'analisis matematico II',
+         'Analisis Matematico II', 'analisis matematico ii', 'ANALISIS MATEMATICO II']).
+es(sintaxis, ['Sintaxis y Semántica de los Lenguajes', 'sintaxis', 'Sintaxis', 'SSdL', 'SSDL', 'SINTAXIS Y SEMANTICA DE LOS LENGUAJES',
+              'Sintaxis y Semantica de los Lenguajes', 'sintaxis y semantica de los lenguajes', 'sintaxis y semantica','sintaxis y semantica de lenguajes']).
+es(fisica1, ['Física I', 'f2', 'Fisica 1', 'Fisica I', 'Física 1', 'fisica i', 'fisica 1', 'FISICA I', 'FISICA 1']).
+es(paradigmas, ['Paradigmas de Programación','paradigmas','paradigmas de programacion',
+                'Paradigmas de Programacion', 'paradigmas de programación', 'Paradigmas', 'PARADIGMAS DE PROGRAMACION']).
+es(ingles1, ['Inglés I','Ingles 1', 'Ingles I', 'Inglés 1','ingles 1', 'ingles I', 'ingles i','INGLES 1','INGLES I']).
+es(probabilidad, ['Probabilidad y Estadística', 'proba', 'probabilidad', 'probabilidad y estadistica',
+                  'Probabilidad y Estadistica', 'Probabilidad y estadistica', 'PROBABILIDAD Y ESTADISTICA']).
+es(disenioDeSistemas, ['Diseño de Sistemas','DdS','Disenio de Sistemas', 'Diseño de sistemas', 'diseño de sistemas', 'DISEÑO DE SISTEMAS']).
+es(sistemasOperativos, ['Sistemas Operativos','SO','SISTEMAS OPERATIVOS','sistemas operativos', 'Sistemas operativos']).
+es(fisica2, ['Física II', 'Fisica 2', 'Fisica II', 'fisica 2', 'fisica II', 'fisica ii', 'FISICA II']).
+es(economia, ['Economía', 'ECONOMIA', 'economia', 'Economia', 'economía']).
+es(gestionDeDatos, ['Gestión de Datos','GdD', 'Gestion de Datos', 'gestion de datos', 'gestión de datos', 'GESTION DE DATOS', 'GESTIÓN DE DATOS']).
+es(ingles2, ['Ingles II', 'ingles 2', 'Ingles 2', 'ingles ii', 'INGLES II', 'Inglés II', 'Inglés 2']).
+es(matematicaSuperior, ['Matemática Superior', 'matematica superior', 'MATEMATICA SUPERIOR', 'Matematica Superior', 'Matematica superior','MATEMÁTICA SUPERIOR']).
+es(legislacion, ['Legislación','legislacion', 'Legislacion', 'LEGISLACION', 'LEGISLACIÓN', 'legis']).
+es(administracionDeRecursos, ['Administración de Recursos', 'ADMINISTRACION DE RECURSOS', 'administracion de recursos',
+                              'Administracion de recursos', 'Administración de Recursos','ADMINISTRACIÓN DE RECURSOS']).
+es(ingenieriaDeSoftware, ['Ingeniería de Software', 'IdS', 'Ingenieria en software', 'Ingenieria de software', 'Ingenieria de Software',
+                          'ingenieria de software', 'INGENIERIA DE SOFTWARE', 'INGENIERÍA DE SOFTWARE']).
+es(teoriaDeControl, ['Teoría de Control','TdC', 'TEORIA DE CONTROL', 'Teoria de Control', 'teoria de control', 'Teoria de control']).
+es(comunicaciones, ['Comunicaciones', 'comunicaciones', 'COMUNICACIONES', 'comunicacion', 'COMUNICACION']).
+es(redesDeInformacion, ['Redes de Información', 'redes de informacion', 'Redes de Informacion', 'REDES DE INFORMACION', 'Redes de informacion', 'RdI','rdi']).
+es(investigacionOperativa, ['Investigación Operativa', 'investigacion operativa', 'INVESTIGACION OPERATIVA', 'INVESTIGACIÓN OPERATIVA',
+                            'Investigacion operativa', 'investigación operativa']).
+es(simulacion, ['Simulación', 'simulacion', 'simulación', 'SIMULACION','SIMULACIÓN']).
+es(proyectoFinal, ['Proyecto Final','PROYECTO FINAL', 'proyecto final', 'Proyecto final']).
+es(inteligenciaArtificial, ['Inteligencia Artificial', 'Inteligencia artificial', 'inteligencia artificial', 'INTELIGENCIA ARTIFICIAL']).
+es(administracionGerencial, ['Administración Gerencial', 'ADMINISTRACION GERENCIAL', 'ADMIN GERENCIAL', 'admin gerencial',
+                             'administracion gerencial', 'administración gerencial']).
+es(sistemasDeGestion, ['Sistemas de Gestión','SdG','Sistemas de Gestion', 'sdg', 'SISTEMAS DE GESTION', 'sistemas de gestion', 'sistemas de gestión']).
 
 /*Año de las materias: anio(Materia, AñoDeLaMateria)*/
 anio(syo, primero).
@@ -448,7 +457,9 @@ anio(sistemasDeGestion, quinto).
 buscarCorrelativasCA(Ingresar) :-
     tieneQueAprobarMateriasDe(Ingresar, _, _, _, _, _).
 
-tieneQueAprobarMateriasDe(Materia, _, _, _, _, _) :-
+tieneQueAprobarMateriasDe(MateriaString, _, _, _, _, _) :-
+    es(Materia, Posibilidades),
+    member(MateriaString, Posibilidades),
     seNecesitaAprobarA(Materia, ListaMaterias),
     findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  primero),  Primero),
     findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  segundo),  Segundo),
@@ -456,7 +467,7 @@ tieneQueAprobarMateriasDe(Materia, _, _, _, _, _) :-
     findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  cuarto),   Cuarto),
     findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  quinto),   Quinto),
 
-    new(Y, dialog('Materias')),
+    new(Y, dialog('REQUISITOS PARA CURSAR: Materias Aprobadas')),
     new(L1, label(texto, 'Materias de primer año', bold)),
     new(L2, label(texto, 'Materias de segundo año', bold)),
     new(L3, label(texto, 'Materias de tercer año', bold)),
@@ -502,7 +513,9 @@ tieneRelacionAprobadaA(Materia, Aprobada) :-
 buscarCorrelativasCC(Ingresar) :-
     tieneQueCursarMateriasDe(Ingresar, _, _, _, _, _).
 
-tieneQueCursarMateriasDe(Materia, _, _, _, _, _) :-
+tieneQueCursarMateriasDe(MateriaString, _, _, _, _, _) :-
+    es(Materia, Posibilidades),
+    member(MateriaString, Posibilidades),
     seNecesitaCursar(Materia, ListaMaterias),
     findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  primero),  Primero),
     findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  segundo),  Segundo),
@@ -511,7 +524,7 @@ tieneQueCursarMateriasDe(Materia, _, _, _, _, _) :-
     findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  quinto),   Quinto),
 
 
-    new(X, dialog('Materias')),
+    new(X, dialog('REQUISITOS PARA CURSAR - Materias Cursadas')),
 
     new(L1, label(texto, 'Materias de primer año', bold)),
     new(L2, label(texto, 'Materias de segundo año', bold)),
@@ -571,7 +584,9 @@ buscarCorrelativasRA(Ingresar) :-
     tieneMateriasDe(Ingresar, _, _, _, _, _).
 
 
-tieneMateriasDe(LaMateria, Primero, Segundo, Tercero, Cuarto, Quinto) :-
+tieneMateriasDe(MateriaString, Primero, Segundo, Tercero, Cuarto, Quinto) :-
+    es(LaMateria, Posibilidades),
+    member(MateriaString, Posibilidades),
     seNecesitaAprobar(LaMateria, ListaMaterias),
     findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  primero),  Primero),
     findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  segundo),  Segundo),
@@ -580,7 +595,7 @@ tieneMateriasDe(LaMateria, Primero, Segundo, Tercero, Cuarto, Quinto) :-
     findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  quinto),   Quinto),
 
 
-    new(W, dialog('Materias')),
+    new(W, dialog('REQUISITOS PARA FIRMAR: Materias Aprobadas')),
 
     new(L1, label(texto, 'Materias de primer año', bold)),
     new(L2, label(texto, 'Materias de segundo año', bold)),
@@ -634,8 +649,9 @@ tieneRelacion(Materia, Aprobada) :-
 pertenezcaA(ListaMaterias, NombreMateria, Anio) :-
     anio(UnaMateria, Anio),
     member(UnaMateria, ListaMaterias),
-    es(UnaMateria, NombreMateria).
+    es(UnaMateria, ListaNombres),
+    nth0(0, ListaNombres, NombreMateria).
 
 
-save(Exe):- pce_autoload_all, qsave_program(Exe,[ emulator(swi('bin/xpce-stub.exe')), stand_alone(true), goal(main) ]).
+save(Exe):- qsave_program(Exe,[stand_alone(true), goal(main)]).
 

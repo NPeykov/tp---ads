@@ -3,7 +3,7 @@
 :- pce_image_directory('C:/Program Files/Correlativas/image').
 :- pce_image_directory('C:/Archivos de Programa/Correlativas/image').
 
-
+main :- principal.
 
 principal :-
     new(P, dialog('ADS - Correlatividad')),
@@ -16,14 +16,14 @@ principal :-
                            and(message(@prolog,
                                        interfazMostrar)))),
 
-    new(Ingresar, button('Ingresar Materias',
-                        and(message(@prolog, interfazIngresar)))),
+%    new(Ingresar, button('Ingresar Materias',
+ %                       and(message(@prolog, interfazIngresar)))),
 
     new(Cerrar, button('Cerrar',
                           and(message(P, free), message(P, destroy)))),
 
 
-    send(P, append, Ingresar),
+  %  send(P, append, Ingresar),
 
     send(P, append, Mostrar),
 
@@ -85,8 +85,8 @@ interfazMostrar :-
                                         and(message(@prolog,
                                                     buscarCorrelativasRA,
                                                     Ingresar?selection)))),
-    new(ParaCursar, label(texto,  '                   Para Cursar                   ', bold)),
-    new(ParaAprobar, label(texto, '                   Para Aprobar                  ', bold)),
+    new(ParaCursar, label(texto,  '         Requisitos para Cursar            ', bold)),
+    new(ParaAprobar, label(texto, '         Requisitos para Firmar            ', bold)),
 
     new(Izquierda, dialog_group('', box)),
     new(Derecha, dialog_group('', group)),
@@ -371,40 +371,40 @@ correlativaCA(sistemasDeGestion, economia).
 
 
 /*Nombre de cada materia*/
-es(syo, "Sistemas y Organizaciones").
-es(am1, "Análisis Matemático I").
-es(discreta, "Matemática Discreta").
-es(algebra, "Álgebra y Geometria Analítica").
-es(quimica, "Química").
-es(ingenieriaYSociedad, "Ingeniería y Sociedad").
-es(analisisDeSistemas, "Análisis de Sistemas").
-es(sistemasDeRepresentacion, "Sistemas de Representacion").
-es(am2, "Análisis Matemático II").
-es(sintaxis, "Sintaxis y Semántica de los Lenguajes").
-es(fisica1, "Física I").
-es(paradigmas, "Paradigmas de Programación").
-es(ingles1, "Inglés I").
-es(probabilidad, "Probabilidad y Estadística").
-es(disenioDeSistemas, "Diseño de Sistemas").
-es(sistemasOperativos, "Sistemas Operativos").
-es(fisica2, "Física II").
-es(economia, "Economía").
-es(gestionDeDatos, "Gestión de Datos").
-es(ingles2, "Ingles II").
-es(matematicaSuperior, "Matemática Superior").
-es(legislacion, "Legislación").
-es(administracionDeRecursos, "Administración de Recursos").
-es(ingenieriaDeSoftware, "Ingeniería de Software").
-es(teoriaDeControl, "Teoría de Control").
-es(comunicaciones, "Comunicaciones").
-es(redesDeInformacion, "Redes de Información").
-es(investigacionOperativa, "Investigación Operativa").
-es(simulacion, "Simulación").
-es(proyectoFinal, "Proyecto Final").
-es(inteligenciaArtificial, "Inteligencia Artificial").
-es(administracionGerencial, "Administración Gerencial").
-es(sistemasDeGestion, "Sistemas de Gestión").
-
+ es(syo,['Sistemas y Organizaciones', 'SyO']).
+es(am1, ['Análisis Matemático I', 'am1']).
+es(discreta, ['Matemática Discreta']).
+es(algebra, ['Álgebra y Geometria Analítica']).
+es(algoritmos, ['Algoritmos y Estructura de Datos']).
+es(quimica, ['Química']).
+es(ingenieriaYSociedad, ['Ingeniería y Sociedad']).
+es(analisisDeSistemas, ['Análisis de Sistemas']).
+es(sistemasDeRepresentacion, ['Sistemas de Representacion']).
+es(am2, ['Análisis Matemático II', 'am2']).
+es(sintaxis, ['Sintaxis y Semántica de los Lenguajes']).
+es(fisica1, ['Física I']).
+es(paradigmas, ['Paradigmas de Programación']).
+es(ingles1, ['Inglés I']).
+es(probabilidad, ['Probabilidad y Estadística']).
+es(disenioDeSistemas, ['Diseño de Sistemas']).
+es(sistemasOperativos, ['Sistemas Operativos']).
+es(fisica2, ['Física II']).
+es(economia, ['Economía']).
+es(gestionDeDatos, ['Gestión de Datos']).
+es(ingles2, ['Ingles II']).
+es(matematicaSuperior, ['Matemática Superior']).
+es(legislacion, ['Legislación']).
+es(administracionDeRecursos, ['Administración de Recursos']).
+es(ingenieriaDeSoftware, ['Ingeniería de Software']).
+es(teoriaDeControl, ['Teoría de Control']).
+es(comunicaciones, ['Comunicaciones']).
+es(redesDeInformacion, ['Redes de Información']).
+es(investigacionOperativa, ['Investigación Operativa']).
+es(simulacion, ['Simulación']).
+es(proyectoFinal, ['Proyecto Final']).
+es(inteligenciaArtificial, ['Inteligencia Artificial']).
+es(administracionGerencial, ['Administración Gerencial']).
+es(sistemasDeGestion, ['Sistemas de Gestión']).
 
 /*Año de las materias: anio(Materia, AñoDeLaMateria)*/
 anio(syo, primero).
@@ -447,7 +447,9 @@ anio(sistemasDeGestion, quinto).
 buscarCorrelativasCA(Ingresar) :-
     tieneQueAprobarMateriasDe(Ingresar, _, _, _, _, _).
 
-tieneQueAprobarMateriasDe(Materia, _, _, _, _, _) :-
+tieneQueAprobarMateriasDe(MateriaString, _, _, _, _, _) :-
+    es(Materia, Posibilidades),
+    member(MateriaString, Posibilidades),
     seNecesitaAprobarA(Materia, ListaMaterias),
     findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  primero),  Primero),
     findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  segundo),  Segundo),
@@ -455,7 +457,7 @@ tieneQueAprobarMateriasDe(Materia, _, _, _, _, _) :-
     findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  cuarto),   Cuarto),
     findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  quinto),   Quinto),
 
-    new(Y, dialog('Materias')),
+    new(Y, dialog('REQUISITOS PARA CURSAR: Materias Aprobadas')),
     new(L1, label(texto, 'Materias de primer año', bold)),
     new(L2, label(texto, 'Materias de segundo año', bold)),
     new(L3, label(texto, 'Materias de tercer año', bold)),
@@ -501,7 +503,9 @@ tieneRelacionAprobadaA(Materia, Aprobada) :-
 buscarCorrelativasCC(Ingresar) :-
     tieneQueCursarMateriasDe(Ingresar, _, _, _, _, _).
 
-tieneQueCursarMateriasDe(Materia, _, _, _, _, _) :-
+tieneQueCursarMateriasDe(MateriaString, _, _, _, _, _) :-
+    es(Materia, Posibilidades),
+    member(MateriaString, Posibilidades),
     seNecesitaCursar(Materia, ListaMaterias),
     findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  primero),  Primero),
     findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  segundo),  Segundo),
@@ -510,7 +514,7 @@ tieneQueCursarMateriasDe(Materia, _, _, _, _, _) :-
     findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  quinto),   Quinto),
 
 
-    new(X, dialog('Materias')),
+    new(X, dialog('REQUISITOS PARA CURSAR - Materias Cursadas')),
 
     new(L1, label(texto, 'Materias de primer año', bold)),
     new(L2, label(texto, 'Materias de segundo año', bold)),
@@ -570,7 +574,9 @@ buscarCorrelativasRA(Ingresar) :-
     tieneMateriasDe(Ingresar, _, _, _, _, _).
 
 
-tieneMateriasDe(LaMateria, Primero, Segundo, Tercero, Cuarto, Quinto) :-
+tieneMateriasDe(MateriaString, Primero, Segundo, Tercero, Cuarto, Quinto) :-
+    es(LaMateria, Posibilidades),
+    member(MateriaString, Posibilidades),
     seNecesitaAprobar(LaMateria, ListaMaterias),
     findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  primero),  Primero),
     findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  segundo),  Segundo),
@@ -579,7 +585,7 @@ tieneMateriasDe(LaMateria, Primero, Segundo, Tercero, Cuarto, Quinto) :-
     findall(NombreMateria, pertenezcaA(ListaMaterias, NombreMateria,  quinto),   Quinto),
 
 
-    new(W, dialog('Materias')),
+    new(W, dialog('REQUISITOS PARA FIRMAR: Materias Aprobadas')),
 
     new(L1, label(texto, 'Materias de primer año', bold)),
     new(L2, label(texto, 'Materias de segundo año', bold)),
@@ -633,8 +639,9 @@ tieneRelacion(Materia, Aprobada) :-
 pertenezcaA(ListaMaterias, NombreMateria, Anio) :-
     anio(UnaMateria, Anio),
     member(UnaMateria, ListaMaterias),
-    es(UnaMateria, NombreMateria).
+    es(UnaMateria, ListaNombres),
+    nth0(0, ListaNombres, NombreMateria).
 
 
-save(Exe):- pce_autoload_all, qsave_program(Exe,[ emulator(swi('bin/xpce-stub.exe')), stand_alone(true), goal(main) ]).
+save(Exe):- qsave_program(Exe,[stand_alone(true), goal(main)]).
 
