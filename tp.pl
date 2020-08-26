@@ -5,25 +5,31 @@
 
 main :- principal.
 
+
+
 principal :-
     new(P, dialog('ADS - Correlatividad')),
 
+
     nueva_imagen(P, _, fondito, point(100,200)),
 
+/*--------------*/
 
+/*-------------*/
     /*BOTONES*/
-    new(Mostrar, button('Mostrar Correlativas',
+    new(Mostrar, button('Consultar Correlativas',
                            and(message(@prolog,
                                        interfazMostrar)))),
 
-%    new(Ingresar, button('Ingresar Materias',
- %                       and(message(@prolog, interfazIngresar)))),
+    new(Int, button('Leer',
+                        and(message(@prolog, bienvenida)))),
 
     new(Cerrar, button('Cerrar',
                           and(message(P, free), message(P, destroy)))),
 
 
-  %  send(P, append, Ingresar),
+
+    send(P, append, Int),
 
     send(P, append, Mostrar),
 
@@ -35,13 +41,15 @@ principal :-
  * message(Objeto, clear) <- limpia por ejemplo, un text box
     */
 
-
 /*----------------LOGO UTN---------------*/
 resource(fondito, image, image('utn.jpg')).
 
+resource(intro, image, image('intro.jpg')).
+
 nueva_imagen(Ventana, Figura, Imagen, Posicion) :-
    new(Figura,  figure),
-   new(Bitmap, bitmap(resource(Imagen),@on)),
+   new(Bitmap, bitmap(resource(Imagen))),
+%   new(Bitmap, bitmap(resource(Imagen),@on)),
    send(Bitmap, name, 1),
    send(Figura, display, Bitmap),
    send(Figura, status, 1),
@@ -117,6 +125,20 @@ interfazMostrar :-
     send(D, append, button('Volver', and(message(D, free),message(D, destroy))), below),
 
     send(D, open_centered).
+
+/*---------------BIENVENIDA-------------------------*/
+bienvenida :-
+    new(V, dialog('Bienvenida')),
+
+    nueva_imagen(V, _, intro, point(100,200)),
+
+    new(B, button('Volver', and(message(V, free)))),
+
+    send(V, append, B),
+    send(V, open).
+
+
+
 
 
 /*----------------ACA SE INGRESARIAN LAS MATERIAS------------------ */
@@ -653,5 +675,14 @@ pertenezcaA(ListaMaterias, NombreMateria, Anio) :-
     nth0(0, ListaNombres, NombreMateria).
 
 
-save(Exe):- qsave_program(Exe,[stand_alone(true), goal(main)]).
+/*save(Exe):- qsave_program(Exe,[stand_alone(true), goal(main)]).*/
+
+save(Exe) :-
+        pce_autoload_all,
+        pce_autoload_all,
+        qsave_program(Exe,
+                      [
+                        stand_alone(true),
+                        goal(main)
+                      ]).
 
